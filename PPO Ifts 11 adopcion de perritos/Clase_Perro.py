@@ -1,24 +1,70 @@
 # Clase perro
 from enum import Enum
 
+class Edad(Enum):
+    Todos = 0   # este lo pongo ahi para cuando haga personas adoptantes puedan elegir sin referencia
+    Junior = 1
+    Adolesente = 2
+    Adulto = 3
+    Señior = 4
+
+class Raza(Enum):
+    Todos = 0  # este lo pongo ahi para cuando haga personas adoptantes puedan elegir sin referencia
+    Bulldog_frances = 1
+    Bulldog = 2
+    Pitbull_terrier = 3
+    Busterrier = 4
+    Chihuahua = 5
+    Yorkshire = 6
+    Galgo = 7
+    Sharpei = 8
+    Shitsu = 9
+    Rottweiler = 10
+    Ovejero_aleman = 11
+    Border_collie = 12
+    Gran_danes = 13
+    Caniche = 14
+    Doberman = 15
+    Canecorso = 16
+    San_Bernardo = 17
+    Manto_Negro = 18
+    Pequines = 19
+    Terranova = 20
+    Mestizo = 21
+
+
+
+class Tamaño(Enum):
+    Pequeño = 1
+    Mediano = 2
+    Grande = 3 
+
 class Estado(Enum):  #se genera un enumerador para validar el estado del perro
-    disponible = "Disponible"
-    reservado = "Reservado"
-    adoptado = "Adoptado"
+    Disponible = 1
+    Reservado = 2
+    Adoptado = 3
 
 
 
 class Perro(object):
 
 
-    def __init__(self,id,nombre,raza,edad,tamaño,peso,estado_salud,vacunado,estado,temperamento,):
+    def __init__(self,id,nombre,raza,edad,tamaño,peso,vacunado,estado,temperamento,):
         self.id = id
         self.nombre = nombre
-        self.raza = raza
-        self.edad = edad
-        self.tamaño = tamaño
+        if isinstance(raza, Raza):
+            self.raza = raza
+        else:
+            raise ValueError("El estado debe ser un miembro de la clase edad")
+        if isinstance(edad, Edad):
+            self.edad = edad
+        else:
+            raise ValueError("El estado debe ser un miembro de la clase edad")
+        if isinstance(tamaño, Tamaño):
+            self.tamaño = tamaño
+        else:
+            raise ValueError("El estado debe ser un miembro de la clase Tamaño")
         self.peso = peso
-        self.estado_salud = estado_salud
         self.vacunado = vacunado
         if isinstance(estado, Estado):   #el chatgpt me recomendo poner esta funcion para que sea un valor valido a la hora de definir la variable
             self.estado = estado
@@ -40,15 +86,15 @@ class Perro(object):
         return None
     
     def mostrar(self):
-        print("El nombre es",self.nombre,"la raza es",self.raza,"su edad",self.edad,"su tamaño",self.tamaño,"su peso",self.peso,"estado de salud",self.estado_salud,"se encuentra",self.estado.value,"se encuentra vacunado",self.vacunado,"y su temperamento es",self.temperamento)
+        print("Nombre ",self.nombre,"Raza ",self.raza.name,"Edad ",self.edad.name,"Tamaño ",self.tamaño.name,"Peso",self.peso,"Estado ",self.estado.name,"Vacunado",self.vacunado,"Temperamento ",self.temperamento)
         return None
 
-#a = Perro(1,"Pelusa","bulldog",6,"pequeño",14,"bueno","si",Estado.disponible,"tranquilo")
-#b =Perro(2,"mordelon","mestizo",13,"pequeño",14,"regular","si",Estado.disponible,"tranquilo")
-#c = Perro(3,"pepin","bulldog",20,"pequeño",20,"buneo","si",Estado.adoptado,"tranquilo")
-#b.mostrar()
-#a.mostrar()
-#c.mostrar()
+a = Perro(1,"Pelusa",Raza.Bulldog_frances,Edad.Junior,Tamaño.Grande,14,"si",Estado.Disponible,"tranquilo")
+b =Perro(2,"mordelon",Raza.Mestizo,Edad.Adulto,Tamaño.Pequeño,14,"si",Estado.Reservado,"tranquilo")
+c = Perro(3,"pepin",Raza.Rottweiler,Edad.Señior,Tamaño.Pequeño,20,"si",Estado.Adoptado,"tranquilo")
+b.mostrar()
+a.mostrar()
+c.mostrar()
 
 #b.cambiar_estado()
 #b.mostrar()
