@@ -2,14 +2,14 @@
 from enum import Enum
 
 class Edad(Enum):
-    Todos = 0   # este lo pongo ahi para cuando haga personas adoptantes puedan elegir sin referencia
+    Sin_Preferencia = 0   # este lo pongo ahi para cuando haga personas adoptantes puedan elegir sin referencia
     Junior = 1
     Adolesente = 2
     Adulto = 3
     Señior = 4
 
 class Raza(Enum):
-    Todos = 0  # este lo pongo ahi para cuando haga personas adoptantes puedan elegir sin referencia
+    Sin_Preferencia = 0  # este lo pongo ahi para cuando haga personas adoptantes puedan elegir sin referencia
     Bulldog_frances = 1
     Bulldog = 2
     Pitbull_terrier = 3
@@ -35,6 +35,7 @@ class Raza(Enum):
 
 
 class Tamaño(Enum):
+    Sin_Preferencia = 0
     Pequeño = 1
     Mediano = 2
     Grande = 3 
@@ -74,27 +75,26 @@ class Perro(object):
         pass
 
     def cambiar_estado(self):
-        print("Coloque el nuevo estado del perro (Disponible, Reservado, Adoptado):")
-        nuevo_estado = input().lower()
-        
-        # Validamos el input y cambiamos el estado
-        if nuevo_estado in Estado.__members__:  # Verificamos si el input es un estado válido
+        print("Coloque el nuevo estado del perro. Opciones:")
+        for estado in Estado:
+            print(f"- {estado.name}")
+        nuevo_estado = input("Estado: ").capitalize()
+
+        if nuevo_estado in Estado.__members__:
             self.estado = Estado[nuevo_estado]
-            print(f"El estado ha sido cambiado a {self.estado.value}.")
+            print(f"El estado ha sido cambiado a {self.estado.name}.")
         else:
-            print("Estado inválido. Debe ser 'Disponible', 'Reservado' o 'Adoptado'.")
-        return None
-    
+            print("Estado inválido.")
     def mostrar(self):
         print("Nombre ",self.nombre,"Raza ",self.raza.name,"Edad ",self.edad.name,"Tamaño ",self.tamaño.name,"Peso",self.peso,"Estado ",self.estado.name,"Vacunado",self.vacunado,"Temperamento ",self.temperamento)
         return None
 
-a = Perro(1,"Pelusa",Raza.Bulldog_frances,Edad.Junior,Tamaño.Grande,14,"si",Estado.Disponible,"tranquilo")
-b =Perro(2,"mordelon",Raza.Mestizo,Edad.Adulto,Tamaño.Pequeño,14,"si",Estado.Reservado,"tranquilo")
-c = Perro(3,"pepin",Raza.Rottweiler,Edad.Señior,Tamaño.Pequeño,20,"si",Estado.Adoptado,"tranquilo")
-b.mostrar()
-a.mostrar()
-c.mostrar()
+#a = Perro(1,"Pelusa",Raza.Bulldog_frances,Edad.Junior,Tamaño.Grande,14,"si",Estado.Disponible,"tranquilo")
+#b =Perro(2,"mordelon",Raza.Mestizo,Edad.Adulto,Tamaño.Pequeño,14,"si",Estado.Reservado,"tranquilo")
+#c = Perro(3,"pepin",Raza.Rottweiler,Edad.Señior,Tamaño.Pequeño,20,"si",Estado.Adoptado,"tranquilo")
+#b.mostrar()
+#a.mostrar()
+#c.mostrar()
 
 #b.cambiar_estado()
 #b.mostrar()
