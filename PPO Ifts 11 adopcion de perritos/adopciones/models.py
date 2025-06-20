@@ -1,51 +1,51 @@
 from django.db import models
 RAZA_CHOISE= [
-	(0, 'Sin_Preferencia'),  
-	(1, 'Bulldog_frances'),
-	(2, 'Bulldog'),
-	(3, 'Pitbull_terrier'),
-   	(4, 'Busterrier'),
-	(5, 'Chihuahua'),
-	(6, 'Yorkshire'),
-	(7, 'Galgo'),
-	(8,'Sharpei'),
-	(9,'Shitsu'),
-	(10,'Rottweiler'),
-	(11,'Ovejero_aleman'),
-	(12,'Border_collie'),
-	(13,'Gran_danes'),
-	(14,'Caniche'),
-	(15,'Doberman'),
-	(16,'Canecorso'),
-	(17,'San_Bernardo'),
-	(18,'Manto_Negro'),
-	(19,'Pequines'),
-	(20,'Terranova'),
-	(21,'Mestizo'),
+	('Sin_Preferencia', 'Sin_Preferencia'),  
+	('Bulldog_frances', 'Bulldog_frances'),
+	('Bulldog', 'Bulldog'),
+	('Pitbull_terrier', 'Pitbull_terrier'),
+   	('Busterrier', 'Busterrier'),
+	('Chihuahua', 'Chihuahua'),
+	('Yorkshire', 'Yorkshire'),
+	('Galgo', 'Galgo'),
+	('Sharpei','Sharpei'),
+	('Shitsu','Shitsu'),
+	('Rottweiler','Rottweiler'),
+	('Ovejero_aleman','Ovejero_aleman'),
+	('Border_collie','Border_collie'),
+	('Gran_danes','Gran_danes'),
+	('Caniche','Caniche'),
+	('Doberman','Doberman'),
+	('Canecorso','Canecorso'),
+	('San_Bernardo','San_Bernardo'),
+	('Manto_Negro','Manto_Negro'),
+	('Pequines','Pequines'),
+	('Terranova','Terranova'),
+	('Mestizo','Mestizo'),
 
 ]
 
 EDAD_CHOISE=[
-	(0,'Sin Preferencia'),
-	(1,'Junior'),
-	(2,'Adolesente'),
-	(3,'Mayor'),
-	(4,'Señior'),
+	('Sin Preferencia','Sin Preferencia'),
+	('Junior','Junior'),
+	('Adolesente','Adolesente'),
+	('Mayor','Mayor'),
+	('Señior','Señior'),
 ]
 TAMAÑO_CHOISE = [
-	(0,'Sin Preferencia'),
-	(1,'Pequeño'),
-	(2,'Mediano'),
-	(3,'Grande'),
+	('Sin Preferencia','Sin Preferencia'),
+	('Pequeño','Pequeño'),
+	('Mediano','Mediano'),
+	('Grande','Grande'),
 ]
 
 
 
 class Perro(models.Model):
 	ESTADO_CHOICES = [
-		(1,'disponible'),
-		(2,'reservado'),
-		(3,'adoptado'),
+		('disponible','disponible'),
+		('reservado','reservado'),
+		('adoptado','adoptado'),
     	]
 	nombre = models.CharField(max_length=100)
 	raza = models.CharField(max_length=40, choices=RAZA_CHOISE, default='Mestizo')
@@ -61,6 +61,7 @@ def __str__(self):
 
 class PersonasAdoptantes(models.Model):
 	user = models.OneToOneField('auth.User', on_delete=models.CASCADE)
+	nombre = models.CharField(max_length=100,default="Sin nombre")
 	dni = models.CharField(max_length=20, unique=True)
 	telefono = models.CharField(max_length=20)
 	direccion = models.TextField()

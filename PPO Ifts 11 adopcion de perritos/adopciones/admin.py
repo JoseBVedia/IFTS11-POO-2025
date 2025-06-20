@@ -9,8 +9,8 @@ class PerroAdmin(admin.ModelAdmin):
 
 @admin.register(PersonasAdoptantes)
 class PersonasAdoptantesAdmin(admin.ModelAdmin):
-    list_display = ('user', 'dni', 'telefono', 'preferencias_raza', 'preferencias_edad', 'preferencias_tamaño')
-    search_fields = ('user__username', 'dni', 'telefono')
+    list_display = ('nombre', 'dni', 'telefono', 'preferencias_raza', 'preferencias_edad', 'preferencias_tamaño')
+    search_fields = ('nombre', 'dni', 'telefono')
     list_filter = ('preferencias_raza', 'preferencias_edad', 'preferencias_tamaño')
 
 @admin.register(Adopcion)
