@@ -1,0 +1,11 @@
+<h2>Perros que coinciden con las preferencias de {{ persona.user.username }}</h2>
+
+{% if perros %}
+    <ul>
+        {% for perro in perros %}
+            <li><strong>{{ perro.nombre }}</strong> - {{ perro.raza }} - {{ perro.edad }} - {{ perro.tamaño }}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No se encontraron perros que coincidan con sus preferencias.</p>
+{% endif %}

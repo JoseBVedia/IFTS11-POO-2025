@@ -1,0 +1,11 @@
+cambiar los models
+python manage.py makemigrations
+python manage.py migrate
+
+
+cd "C:\Users\btok\Documents\GitHub\IFTS11-POO-2025\PPO Ifts 11 adopcion de perritos"
+python -m venv venv   
+.\venv\Scripts\activate
+python manage.py runserver     
+
+
