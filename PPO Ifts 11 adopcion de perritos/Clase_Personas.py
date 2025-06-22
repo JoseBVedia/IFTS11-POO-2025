@@ -36,36 +36,32 @@ class PersonasAdoptantes(object):
         return None
     
     def modificar_datos(self):
-        print("\n--- Modificación de Datos ---")
+        print("\n Modificación de Datos ")
         respuesta = input("¿Desea modificar su email? (S/N): ").strip().upper()
         if respuesta == "S":
             nuevo_email = input("Ingrese su nuevo email: ").strip()
             self.email = nuevo_email
         respuesta = input("¿Desea modificar sus preferencias? (S/N): ").strip().upper()
         if respuesta == "S":
-            print("\nOpciones de raza:")
+            print("\n Opciones de raza:")
             for raza in Raza:
-                if raza != Raza.Todos:
-                    print(f"- {raza.name}")
+                print(f"- {raza.name}")
             nueva_raza = input("Ingrese nueva raza (escriba exactamente como aparece): ").strip()
             if nueva_raza in Raza.__members__:
                 self.preferencias_raza = Raza[nueva_raza]
             else:
                 print("Raza inválida. No se cambió.")
-
-            print("\nOpciones de edad:")
+            print("\n Opciones de edad:")
             for edad in Edad:
-                if edad != Edad.Todos:
-                    print(f"- {edad.name}")
+                print(f"- {edad.name}")
             nueva_edad = input("Ingrese nueva edad: ").strip()
             if nueva_edad in Edad.__members__:
                 self.preferencias_edad = Edad[nueva_edad]
             else:
                 print("Edad inválida. No se cambió.")
-
-            print("\nOpciones de tamaño:")
-            for tam in Tamaño:
-                print(f"- {tam.name}")
+            print("\n Opciones de tamaño:")
+            for tamaño in Tamaño:
+                print(f"- {tamaño.name}")
             nuevo_tamaño = input("Ingrese nuevo tamaño: ").strip()
             if nuevo_tamaño in Tamaño.__members__:
                 self.preferencias_tamaño = Tamaño[nuevo_tamaño]
@@ -75,15 +71,39 @@ class PersonasAdoptantes(object):
             print("\nDatos actualizados correctamente.")
     
     def ingresoPersona(self):
-        nombre = input("ingrese Nombre ")
+        nombre = input("Ingrese su nombre: ")
         self.nombre = nombre
-        dni= input("ingrese dni ")
+        dni = int(input("Ingrese su DNI: "))
         self.dni = dni
-        mail= input("ingrese mail ")
-        self.email = mail
-        self.preferencias_raza =input("raza de preferencia ")
-        self.preferencias_edad =input ("edad de prefe ")
-        self.preferencias_tamaño = input("tamaño de prefe ")
+        email = input("Ingrese su correo electrónico: ")
+        self.email = email
+        print("\n Opciones de raza:")
+        for raza in Raza:
+            print(f"- {raza.name}")
+        preferencias_raza = input("Ingrese su raza preferida (escriba exactamente como aparece): ").strip()
+        if preferencias_raza in Raza.__members__:
+            preferencias_raza = Raza[preferencias_raza]
+        else:
+            print("Raza inválida. Se establecerá como Sin Preferencia.") 
+            preferencias_raza = Raza.Sin_Preferencia
+        print("\n Opciones de edad:")
+        for edad in Edad:
+            print(f"- {edad.name}")
+        preferencias_edad = input("Ingrese su edad preferida: ").strip()
+        if preferencias_edad in Edad.__members__:
+            preferencias_edad = Edad[preferencias_edad]
+        else:
+            print("Edad inválida. Se establecerá como Sin Preferencia.") 
+            preferencias_edad = Edad.Sin_Preferencia
+        print("\n Opciones de tamaño:")
+        for tamaño in Tamaño:
+            print(f"- {tamaño.name}")
+        preferencias_tamaño = input("Ingrese su tamaño preferido: ").strip()
+        if preferencias_tamaño in Tamaño.__members__:
+            preferencias_tamaño = Tamaño[preferencias_tamaño]
+        else:
+            print("Tamaño inválido. Se establecerá como Sin Preferencia.") 
+            preferencias_tamaño = Tamaño.Sin_Preferencia
         return None 
 
 

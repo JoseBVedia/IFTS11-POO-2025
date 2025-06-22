@@ -31,10 +31,21 @@ def matcher(self,usuario):
         i = i + 1
     print("no se encontro perro")
     return None
-
-                
-
-
+def Elminar_elemento(self,elemento):
+    if elemento in self:
+        self.remove(elemento)
+        return True
+    else:
+        return False
+def mostrar_perros_diponibles(self):
+    disponibles= []
+    i = 0
+    while i < len(self):
+        if self[i].estado.value == 1:
+            disponibles.append(self[i])
+            self[i].mostrar()
+        i = i + 1    
+    return None
 
 bdCentroAdopcion = CentroAdopcion([],[])
 perro1 = Perro(1,"Raqueñ",Raza.Bulldog,Edad.Junior,Tamaño.Mediano,14,True,Estado.Disponible,"Tranquilo")
@@ -51,11 +62,20 @@ persona1 = PersonasAdoptantes("CARLOS",3333,"CarlosReloco@hotmail.com",Raza.Bull
 persona2 = PersonasAdoptantes("Michel",3215,"Michel69@gmail.com",Raza.Rottweiler,Tamaño.Grande,Edad.Junior,[])
 bdCentroAdopcion.ingresarpersonas(persona1)
 bdCentroAdopcion.ingresarpersonas(persona2)
-print(len(bdCentroAdopcion.regPerros))
-bdCentroAdopcion.regPerros[0].mostrar()
-matcher(bdCentroAdopcion.regPerros,bdCentroAdopcion.regPersonas[0])
-bdCentroAdopcion.regPersonas[0].ver_historial()
-bdCentroAdopcion.regPersonas[1].modificar_datos()
+mostrar_perros_diponibles(bdCentroAdopcion.regPerros)
+#persona3 = PersonasAdoptantes(0,0,0,Raza.Bulldog,Tamaño.Mediano,Edad.Junior,[]) #no se como hacer para que eliga una variable y no tenga que iniciarlizarla con los valores de la clase
+#persona3.ingresoPersona()
+#bdCentroAdopcion.regPersonas.append(persona3)
+perro6 = Perro(0,0,Raza.Border_collie,Edad.Junior,Tamaño.Mediano,0,True,Estado.Disponible,0)
+perro6.ingresarPerro()
+bdCentroAdopcion.regPerros.append(perro6)
+
+
+#print(len(bdCentroAdopcion.regPerros))
+#bdCentroAdopcion.regPerros[0].mostrar()
+#matcher(bdCentroAdopcion.regPerros,bdCentroAdopcion.regPersonas[0])
+#bdCentroAdopcion.regPersonas[0].ver_historial()
+#bdCentroAdopcion.regPersonas[1].modificar_datos()
 
 
 

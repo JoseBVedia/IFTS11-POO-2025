@@ -88,6 +88,51 @@ class Perro(object):
     def mostrar(self):
         print("Nombre ",self.nombre,"Raza ",self.raza.name,"Edad ",self.edad.name,"Tamaño ",self.tamaño.name,"Peso",self.peso,"Estado ",self.estado.name,"Vacunado",self.vacunado,"Temperamento ",self.temperamento)
         return None
+    def ingresarPerro(self):
+        print("Ingrese los datos del perro:")
+        self.id = int(input("ID: "))
+        self.nombre = input("Nombre: ")
+        print("\n Opciones de raza:")
+        for raza in Raza:
+            if raza != Raza.Sin_Preferencia:
+                print(f"- {raza.name}")
+        raza_input = input("Ingrese la raza (escriba exactamente como aparece): ").strip()
+        if raza_input in Raza.__members__:
+            self.raza = Raza[raza_input]
+        else:
+            raise ValueError("Raza inválida.")
+        
+        print("\n Opciones de edad:")
+        for edad in Edad:
+            if edad != Edad.Sin_Preferencia:
+                print(f"- {edad.name}")
+        edad_input = input("Ingrese la edad: ").strip()
+        if edad_input in Edad.__members__:
+            self.edad = Edad[edad_input]
+        else:
+            raise ValueError("Edad inválida.")
+        
+        print("\n Opciones de tamaño:")
+        for tamaño in Tamaño:
+            if tamaño != Tamaño.Sin_Preferencia:
+                print(f"- {tamaño.name}")
+        tamaño_input = input("Ingrese el tamaño: ").strip()
+        if tamaño_input in Tamaño.__members__:
+            self.tamaño = Tamaño[tamaño_input]
+        else:
+            raise ValueError("Tamaño inválido.")
+        self.peso = float(input("Peso: "))
+        self.vacunado = input("¿Está vacunado? (si/no): ").strip().lower() == "si"
+        print("\n Opciones de estado:")
+        for estado in Estado:
+            print(f"- {estado.name}")
+        estado_input = input("Ingrese el estado: ").strip().capitalize()
+        if estado_input in Estado.__members__:
+            self.estado = Estado[estado_input]
+        else:
+            raise ValueError("Estado inválido.")
+        self.temperamento = input("Temperamento: ")
+        return None
 
 #a = Perro(1,"Pelusa",Raza.Bulldog_frances,Edad.Junior,Tamaño.Grande,14,"si",Estado.Disponible,"tranquilo")
 #b =Perro(2,"mordelon",Raza.Mestizo,Edad.Adulto,Tamaño.Pequeño,14,"si",Estado.Reservado,"tranquilo")
